@@ -61,3 +61,4 @@ C:\Users\Paulius\Documents\repos\MonitoringDemo\MonitoringDemo\obj\Debug\net8.0\
 C:\Users\Paulius\Documents\repos\MonitoringDemo\MonitoringDemo\obj\Debug\net8.0\ref\MonitoringDemo.dll
 C:\Users\Paulius\Documents\repos\MonitoringDemo\MonitoringDemo\bin\Debug\net8.0\Prometheus.NetStandard.dll
 C:\Users\Paulius\Documents\repos\MonitoringDemo\MonitoringDemo\bin\Debug\net8.0\Prometheus.AspNetCore.dll
+C:\Users\Paulius\Documents\repos\MonitoringDemo\MonitoringDemo\obj\Debug\net8.0\MonitoringDemo.sourcelink.json

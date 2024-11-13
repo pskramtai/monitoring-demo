@@ -34,7 +34,6 @@ builder.Services.AddOpenTelemetry()
         x.SetSampler(new AlwaysOnSampler());
         
         x.AddAspNetCoreInstrumentation();
-        // .AddHttpClientInstrumentation();
     });
 
 builder.Services.AddMetrics();
