@@ -1,0 +1,28 @@
+groups:
+- name: http_alerts
+  rules:
+  - alert: HighServerErrorRate
+    expr: sum(increase(http_server_request_duration_seconds_count{http_response_status_code=~"5.."}[1h])) > 50
+    for: 1m  
+    labels:
+      severity: critical
+    annotations:
+      summary: "High server error rate detected"
+      description: "The number of 5xx errors has exceeded 50 in the last hour."
+  - alert: High90thPercentileResponseTime
+    expr: histogram_quantile(0.9, sum by (le, http_route, http_request_method) (rate(http_server_request_duration_seconds_bucket[10m]))) > 0.5
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High 90th percentile response time detected"
+      description: "The 90th percentile response time for route {{ $labels.http_route }} (method {{ $labels.http_request_method }}) has exceeded 0.5 seconds over the last 10 minutes."
+  - alert: HighRequestRate
+    expr: sum(rate(http_server_request_duration_seconds_count{http_route=~"$endpoint"}[30m])) > 20
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High request rate detected"
+      description: "The request rate for {{ $labels.http_route }} is unusually high."
+

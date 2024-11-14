@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 5s 
+  evaluation_interval: 15s 
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - localhost:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+   - "weather_api_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+scrape_configs:
+  # Scrape Prometheus itself
+  - job_name: 'prometheus'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['localhost:9090']  # Prometheus server
+
+  - job_name: 'weather_app'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:5231']
